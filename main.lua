@@ -7,8 +7,12 @@ local function loadFile(loc, ...)
     return assert(loadfile(path .. loc .. ".lua"))(...)
 end
 
-loadFile("friend_crate_scripts/FriendCrateAPI")
+local Constants = loadFile("friend_crate_scripts/Constants")
+
+local api = loadFile("friend_crate_scripts/FriendCrateAPI")
+api.AddConstants(Constants)
 loadFile("friend_crate_scripts/RegisterFriends")
 
 local FriendCrateScript = loadFile("friend_crate_scripts/FriendCrate")
+FriendCrateScript.AddConstants(Constants)
 FriendCrateScript.AddCallbacks(FriendCrateMod)

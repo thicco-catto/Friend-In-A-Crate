@@ -2,7 +2,7 @@ local Friend = {
     SPRITE = "gfx/familiars/baby_spider.png",
     BASE_STATS = {
         DAMAGE = 3.5,
-        FIRE_RATE = 15,
+        FIRE_RATE = 20,
         TEAR_FLAGS = TearFlags.TEAR_NORMAL,
         TEAR_COLOR = Color(1, 1, 1),
 
@@ -12,7 +12,7 @@ local Friend = {
 
     CURRENT_STATS = {
         DAMAGE = 3.5,
-        FIRE_RATE = 15,
+        FIRE_RATE = 20,
         TEAR_FLAGS = TearFlags.TEAR_NORMAL,
         TEAR_COLOR = Color(1, 1, 1),
 
@@ -29,7 +29,7 @@ function Friend:New(sprite, newFriendStats)
         SPRITE = sprite,
         BASE_STATS = {
             DAMAGE = newFriendStats.DAMAGE or 3.5,
-            FIRE_RATE = newFriendStats.FIRE_RATE or 10,
+            FIRE_RATE = newFriendStats.FIRE_RATE or 20,
             TEAR_FLAGS = newFriendStats.TEAR_FLAGS or TearFlags.TEAR_NORMAL,
             TEAR_COLOR = newFriendStats.TEAR_COLOR or Color(1, 1, 1),
 
@@ -39,7 +39,7 @@ function Friend:New(sprite, newFriendStats)
 
         CURRENT_STATS = {
             DAMAGE = newFriendStats.DAMAGE or 3.5,
-            FIRE_RATE = newFriendStats.FIRE_RATE or 10,
+            FIRE_RATE = newFriendStats.FIRE_RATE or 20,
             TEAR_FLAGS = newFriendStats.TEAR_FLAGS or TearFlags.TEAR_NORMAL,
             TEAR_COLOR = newFriendStats.TEAR_COLOR or Color(1, 1, 1),
 
@@ -57,7 +57,7 @@ end
 
 function Friend:Init(familiar)
     self.CURRENT_STATS.DAMAGE = self.BASE_STATS.DAMAGE
-    self.CURRENT_STATS.FIRE_RATE = self.BASE_STATS.DAMAGE
+    self.CURRENT_STATS.FIRE_RATE = self.BASE_STATS.FIRE_RATE
     self.CURRENT_STATS.TEAR_FLAGS = self.BASE_STATS.TEAR_FLAGS
     self.CURRENT_STATS.TEAR_COLOR = self.BASE_STATS.TEAR_COLOR
 
@@ -72,6 +72,8 @@ function Friend:Init(familiar)
     for key, value in pairs(self.BASE_STATS.PLAYER_EFFECTS) do
         self.CURRENT_STATS.PLAYER_EFFECTS[key] = value
     end
+
+    familiar:GetData().ShootAnimFrames = 0
 
     familiar:GetSprite():ReplaceSpritesheet(0, self.SPRITE)
     familiar:GetSprite():LoadGraphics()

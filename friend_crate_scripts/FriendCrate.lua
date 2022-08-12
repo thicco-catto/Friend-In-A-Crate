@@ -1,15 +1,21 @@
 local FriendCrate = {}
+local game = Game()
+local Constants
 
-local function loadFile(loc, ...)
-    local _, err = pcall(require, "")
-    local modName = err:match("/mods/(.*)/%.lua")
-    local path = "mods/" .. modName .. "/"
-    return assert(loadfile(path .. loc .. ".lua"))(...)
+
+local function GetFriendCrateRoomRNG(player)
+    local level = game:GetLevel()
+    local itemRngSeed = player:GetCollectibleRNG(Constants.FRIEND_CRATE_ITEM):GetSeed()
+
+    itemRngSeed = itemRngSeed + level:GetStage()
+    itemRngSeed = itemRngSeed + level:GetCurrentRoomDesc().GridIndex
+
+    local rng = RNG()
+    rng:SetSeed(itemRngSeed, 35)
+
+    return rng
 end
 
-local Constants = loadFile("friend_crate_scripts/Constants")
-
-local SpiderBaby = loadFile("friend_crate_scripts/friends/long_baby")
 
 ---@param player EntityPlayer
 function FriendCrate:OnFamiliarCache(player)
@@ -17,6 +23,10 @@ function FriendCrate:OnFamiliarCache(player)
     local numBoxUses = player:GetEffects():GetCollectibleEffectNum(CollectibleType.COLLECTIBLE_BOX_OF_FRIENDS)
 
     local friendCrateFamiliarsNum = friendCrateItemCount + numBoxUses
+
+    if friendCrateItemCount == 0 then
+        friendCrateFamiliarsNum = 0
+    end
 
     player:CheckFamiliar(Constants.FRIEND_CRATE_FAMILIAR_VARIANT, friendCrateFamiliarsNum,
         player:GetCollectibleRNG(Constants.FRIEND_CRATE_ITEM),
@@ -26,11 +36,25 @@ end
 
 ---@param familiar EntityFamiliar
 function FriendCrate:OnFamiliarInit(familiar)
-    familiar:GetData().FriendObject = SpiderBaby
-    familiar:GetSprite():ReplaceSpritesheet(0, SpiderBaby.SPRITE)
-    familiar:GetSprite():LoadGraphics()
-    familiar:GetData().ShootAnimFrames = 0
+    local rng = GetFriendCrateRoomRNG(familiar.Player)
+    local playerIndex = familiar.Player:GetCollectibleRNG(1):GetSeed()
 
+    for _, otherFriend in ipairs(Isaac.FindByType(EntityType.ENTITY_FAMILIAR, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)) do
+        otherFriend = otherFriend:ToFamiliar()
+        local otherPlayerIndex = otherFriend.Player:GetCollectibleRNG(1):GetSeed()
+
+        if playerIndex == otherPlayerIndex and EntityPtr(otherFriend) ~= EntityPtr(familiar) then
+            --They're from the same player but different familiars
+            rng:Next()
+        end
+    end
+
+    local chosenFriend = Constants.FRIENDS_LIST[rng:RandomInt(#Constants.FRIENDS_LIST) + 1]
+
+    print(Constants.FRIENDS_LIST[1])
+
+    familiar:GetData().FriendObject = chosenFriend
+    familiar:GetData().FriendObject:Init(familiar)
     familiar:AddToFollowers()
 end
 
@@ -87,13 +111,9 @@ end
 
 ---@param player EntityPlayer
 function FriendCrate:OnPeffectUpdate(player)
-    for _, familiar in ipairs(Isaac.FindByType(EntityType.ENTITY_FAMILIAR, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)) do
-        if familiar:Exists() then
-            for cacheFlag, _ in pairs(familiar:GetData().FriendObject.CURRENT_STATS.PLAYER_STATS) do
-                player:AddCacheFlags(cacheFlag)
-            end
-        end
-    end
+    if not player:HasCollectible(Constants.FRIEND_CRATE_ITEM) then return end
+
+    player:AddCacheFlags(CacheFlag.CACHE_ALL)
     player:EvaluateItems()
 end
 
@@ -133,6 +153,27 @@ function FriendCrate:OnCache(player, cacheFlag)
 end
 
 
+function FriendCrate:OnNewRoom()
+    for i = 0, game:GetNumPlayers() - 1, 1 do
+        local player = game:GetPlayer(i)
+        local playerIndex = player:GetCollectibleRNG(1):GetSeed()
+        local rng = GetFriendCrateRoomRNG(player)
+
+        for _, familiar in ipairs(Isaac.FindByType(EntityType.ENTITY_FAMILIAR, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)) do
+            familiar = familiar:ToFamiliar()
+            local otherPlayerIndex = familiar.Player:GetCollectibleRNG(1):GetSeed()
+
+            if playerIndex == otherPlayerIndex then
+                local chosenFriend = Constants.FRIENDS_LIST[rng:RandomInt(#Constants.FRIENDS_LIST) + 1]
+
+                familiar:GetData().FriendObject = chosenFriend
+                familiar:GetData().FriendObject:Init(familiar)
+            end
+        end
+    end
+end
+
+
 function FriendCrate.AddCallbacks(mod)
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, FriendCrate.OnFamiliarCache, CacheFlag.CACHE_FAMILIARS)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, FriendCrate.OnFamiliarInit, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)
@@ -140,6 +181,14 @@ function FriendCrate.AddCallbacks(mod)
 
     mod:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, FriendCrate.OnPeffectUpdate)
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, FriendCrate.OnCache)
+
+    mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, FriendCrate.OnNewRoom)
 end
+
+
+function FriendCrate.AddConstants(const)
+    Constants = const
+end
+
 
 return FriendCrate

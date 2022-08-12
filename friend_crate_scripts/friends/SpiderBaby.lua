@@ -17,9 +17,8 @@ end
 
 
 ---@param familiar EntityFamiliar
-function Friend:OnUpdate(familiar)
+function SpiderBaby:OnUpdate(familiar)
     if familiar:GetData().ShootAnimFrames > 0 then return end
-    print("hola")
     if game:GetRoom():IsClear() then return end
 
     local rng = familiar:GetDropRNG()
