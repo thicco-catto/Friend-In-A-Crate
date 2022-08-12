@@ -5,63 +5,62 @@ local function loadFile(loc, ...)
     return assert(loadfile(path .. loc .. ".lua"))(...)
 end
 
--- local belialBaby = loadFile("friend_crate_scripts/friends/BelialBaby")
--- FRIEND_CRATE_API.RegisterFriend(belialBaby)
+local belialBaby = loadFile("friend_crate_scripts/friends/BelialBaby")
+FRIEND_CRATE_API.RegisterFriend(belialBaby)
 
 local bigBaby = loadFile("friend_crate_scripts/friends/BigBaby")
 FRIEND_CRATE_API.RegisterFriend(bigBaby)
 
+local cryBaby = loadFile("friend_crate_scripts/friends/CryBaby")
+FRIEND_CRATE_API.RegisterFriend(cryBaby)
 
--- local cryBaby = loadFile("friend_crate_scripts/friends/CryBaby")
--- FRIEND_CRATE_API.RegisterFriend(cryBaby)
+local cyBaby = loadFile("friend_crate_scripts/friends/CyBaby")
+FRIEND_CRATE_API.RegisterFriend(cyBaby)
 
--- local cyBaby = loadFile("friend_crate_scripts/friends/CyBaby")
--- FRIEND_CRATE_API.RegisterFriend(cyBaby)
-
--- local darkBaby = loadFile("friend_crate_scripts/friends/DarkBaby")
--- FRIEND_CRATE_API.RegisterFriend(darkBaby)
+local darkBaby = loadFile("friend_crate_scripts/friends/DarkBaby")
+FRIEND_CRATE_API.RegisterFriend(darkBaby)
 
 local drippingBaby = loadFile("friend_crate_scripts/friends/DrippingBaby")
 FRIEND_CRATE_API.RegisterFriend(drippingBaby)
 
--- local greenBaby = loadFile("friend_crate_scripts/friends/GreenBaby")
--- FRIEND_CRATE_API.RegisterFriend(greenBaby)
+local greenBaby = loadFile("friend_crate_scripts/friends/GreenBaby")
+FRIEND_CRATE_API.RegisterFriend(greenBaby)
 
--- local longBaby = loadFile("friend_crate_scripts/friends/LongBaby")
--- FRIEND_CRATE_API.RegisterFriend(longBaby)
+local longBaby = loadFile("friend_crate_scripts/friends/LongBaby")
+FRIEND_CRATE_API.RegisterFriend(longBaby)
 
 local lilBaby = loadFile("friend_crate_scripts/friends/LilBaby")
 FRIEND_CRATE_API.RegisterFriend(lilBaby)
 
--- local lostBaby = loadFile("friend_crate_scripts/friends/LostBaby")
--- FRIEND_CRATE_API.RegisterFriend(lostBaby)
+local lostBaby = loadFile("friend_crate_scripts/friends/LostBaby")
+FRIEND_CRATE_API.RegisterFriend(lostBaby)
 
--- local nooseBaby = loadFile("friend_crate_scripts/friends/NooseBaby")
--- FRIEND_CRATE_API.RegisterFriend(nooseBaby)
+local nooseBaby = loadFile("friend_crate_scripts/friends/NooseBaby")
+FRIEND_CRATE_API.RegisterFriend(nooseBaby)
 
--- local psyBaby = loadFile("friend_crate_scripts/friends/PsyBaby")
--- FRIEND_CRATE_API.RegisterFriend(psyBaby)
+local psyBaby = loadFile("friend_crate_scripts/friends/PsyBaby")
+FRIEND_CRATE_API.RegisterFriend(psyBaby)
 
--- local rageBaby = loadFile("friend_crate_scripts/friends/RageBaby")
--- FRIEND_CRATE_API.RegisterFriend(rageBaby)
+local rageBaby = loadFile("friend_crate_scripts/friends/RageBaby")
+FRIEND_CRATE_API.RegisterFriend(rageBaby)
 
--- local revengeBaby = loadFile("friend_crate_scripts/friends/RevengeBaby")
--- FRIEND_CRATE_API.RegisterFriend(revengeBaby)
+local revengeBaby = loadFile("friend_crate_scripts/friends/RevengeBaby")
+FRIEND_CRATE_API.RegisterFriend(revengeBaby)
 
--- local shadowBaby = loadFile("friend_crate_scripts/friends/ShadowBaby")
--- FRIEND_CRATE_API.RegisterFriend(shadowBaby)
+local shadowBaby = loadFile("friend_crate_scripts/friends/ShadowBaby")
+FRIEND_CRATE_API.RegisterFriend(shadowBaby)
 
--- local spiderBaby = loadFile("friend_crate_scripts/friends/SpiderBaby")
--- FRIEND_CRATE_API.RegisterFriend(spiderBaby)
+local spiderBaby = loadFile("friend_crate_scripts/friends/SpiderBaby")
+FRIEND_CRATE_API.RegisterFriend(spiderBaby)
 
 local superGreedBaby = loadFile("friend_crate_scripts/friends/SuperGreedBaby")
 FRIEND_CRATE_API.RegisterFriend(superGreedBaby)
 
--- local trollBaby = loadFile("friend_crate_scripts/friends/TrollBaby")
--- FRIEND_CRATE_API.RegisterFriend(trollBaby)
+local trollBaby = loadFile("friend_crate_scripts/friends/TrollBaby")
+FRIEND_CRATE_API.RegisterFriend(trollBaby)
 
--- local whoreBaby = loadFile("friend_crate_scripts/friends/WhoreBaby")
--- FRIEND_CRATE_API.RegisterFriend(whoreBaby)
+local whoreBaby = loadFile("friend_crate_scripts/friends/WhoreBaby")
+FRIEND_CRATE_API.RegisterFriend(whoreBaby)
 
--- local yellowBaby = loadFile("friend_crate_scripts/friends/YellowBaby")
--- FRIEND_CRATE_API.RegisterFriend(yellowBaby)
+local yellowBaby = loadFile("friend_crate_scripts/friends/YellowBaby")
+FRIEND_CRATE_API.RegisterFriend(yellowBaby)
