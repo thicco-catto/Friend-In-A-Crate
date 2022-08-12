@@ -55,7 +55,7 @@ function Friend:New(sprite, newFriendStats)
 end
 
 
-function Friend:Init()
+function Friend:Init(familiar)
     self.CURRENT_STATS.DAMAGE = self.BASE_STATS.DAMAGE
     self.CURRENT_STATS.FIRE_RATE = self.BASE_STATS.DAMAGE
     self.CURRENT_STATS.TEAR_FLAGS = self.BASE_STATS.TEAR_FLAGS
@@ -72,6 +72,15 @@ function Friend:Init()
     for key, value in pairs(self.BASE_STATS.PLAYER_EFFECTS) do
         self.CURRENT_STATS.PLAYER_EFFECTS[key] = value
     end
+
+    familiar:GetSprite():ReplaceSpritesheet(0, self.SPRITE)
+    familiar:GetSprite():LoadGraphics()
+
+    self:OnInit(familiar)
+end
+
+
+function Friend:OnInit(familiar)
 end
 
 

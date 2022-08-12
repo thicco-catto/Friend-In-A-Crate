@@ -26,4 +26,6 @@ Constants.DIRECTION_TO_VECTOR = {
 	[Direction.DOWN] = Vector(0, 1),
 }
 
+Constants.FRIENDS_LIST = {}
+
 return Constants

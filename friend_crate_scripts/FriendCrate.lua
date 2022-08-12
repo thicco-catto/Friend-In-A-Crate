@@ -114,6 +114,8 @@ local function ChangeStat(player, cacheFlag, amount)
         player.MoveSpeed = player.MoveSpeed + amount
     elseif cacheFlag == CacheFlag.CACHE_SIZE then
         player.SpriteScale = player.SpriteScale * amount
+    elseif cacheFlag == CacheFlag.CACHE_FLYING then
+        player.CanFly = amount
     end
 end
 
