@@ -7,7 +7,7 @@ end
 local Friend = loadFile("friend_crate_scripts/Friend")
 
 local ShadowBaby = Friend:New("gfx/familiars/shadow_baby.png", {
-    DAMAGE = 4,
+    DAMAGE = 5,
 })
 
 return ShadowBaby
