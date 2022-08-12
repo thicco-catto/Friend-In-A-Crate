@@ -9,7 +9,7 @@ end
 
 local Constants = loadFile("friend_crate_scripts/Constants")
 
-local SpiderBaby = loadFile("friend_crate_scripts/friends/lost_baby")
+local SpiderBaby = loadFile("friend_crate_scripts/friends/cy_baby")
 
 ---@param player EntityPlayer
 function FriendCrate:OnFamiliarCache(player)
