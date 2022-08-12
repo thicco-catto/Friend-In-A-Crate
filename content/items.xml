@@ -1,0 +1,3 @@
+<items gfxroot="gfx/items/" deathanm2="gfx/death_items.anm2" version="1">
+    <familiar id="0" name="Friend in a crate" description="What could it be?" gfx="friend_in_a_crate.png" quality="2" tags="baby monstermanual offensive summonable"/>
+</items>
