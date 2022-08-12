@@ -7,7 +7,10 @@ local Friend = {
         TEAR_COLOR = Color(1, 1, 1),
 
         PLAYER_STATS = {},
-        PLAYER_EFFECTS = {}
+
+        PLAYER_COLLECTIBLE_EFFECTS = {},
+        PLAYER_TRINKET_EFFECTS = {},
+        PLAYER_NULL_EFFECTS = {}
     },
 
     CURRENT_STATS = {
@@ -17,7 +20,6 @@ local Friend = {
         TEAR_COLOR = Color(1, 1, 1),
 
         PLAYER_STATS = {},
-        PLAYER_EFFECTS = {}
     }
 }
 
@@ -34,7 +36,10 @@ function Friend:New(sprite, newFriendStats)
             TEAR_COLOR = newFriendStats.TEAR_COLOR or Color(1, 1, 1),
 
             PLAYER_STATS = newFriendStats.PLAYER_STATS or {},
-            PLAYER_EFFECTS = newFriendStats.PLAYER_EFFECTS or {}
+
+            PLAYER_COLLECTIBLE_EFFECTS = newFriendStats.PLAYER_COLLECTIBLE_EFFECTS or {},
+            PLAYER_TRINKET_EFFECTS = newFriendStats.PLAYER_TRINKET_EFFECTS or {},
+            PLAYER_NULL_EFFECTS = newFriendStats.PLAYER_NULL_EFFECTS or {}
         },
 
         CURRENT_STATS = {
@@ -44,7 +49,6 @@ function Friend:New(sprite, newFriendStats)
             TEAR_COLOR = newFriendStats.TEAR_COLOR or Color(1, 1, 1),
 
             PLAYER_STATS = newFriendStats.PLAYER_STATS or {},
-            PLAYER_EFFECTS = newFriendStats.PLAYER_EFFECTS or {}
         }
     }
 
@@ -67,10 +71,16 @@ function Friend:Init(familiar)
         self.CURRENT_STATS.PLAYER_STATS[key] = value
     end
 
-    self.CURRENT_STATS.PLAYER_EFFECTS = {}
+    for _, collectibleId in pairs(self.BASE_STATS.PLAYER_COLLECTIBLE_EFFECTS) do
+        familiar.Player:GetEffects():AddCollectibleEffect(collectibleId)
+    end
 
-    for key, value in pairs(self.BASE_STATS.PLAYER_EFFECTS) do
-        self.CURRENT_STATS.PLAYER_EFFECTS[key] = value
+    for _, trinketId in pairs(self.BASE_STATS.PLAYER_TRINKET_EFFECTS) do
+        familiar.Player:GetEffects():AddTrinketEffect(trinketId)
+    end
+
+    for _, nullItemID in pairs(self.BASE_STATS.PLAYER_NULL_EFFECTS) do
+        familiar.Player:GetEffects():AddNullEffect(nullItemID)
     end
 
     familiar:GetData().ShootAnimFrames = 0

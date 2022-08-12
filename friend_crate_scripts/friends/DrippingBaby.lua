@@ -6,11 +6,10 @@ local function loadFile(loc, ...)
 end
 local Friend = loadFile("friend_crate_scripts/Friend")
 
-local LongBaby = Friend:New("gfx/familiars/long_baby.png", {
-    PLAYER_STATS = {
-        [CacheFlag.CACHE_SHOTSPEED] = 0.1,
-        [CacheFlag.CACHE_RANGE] = 40
+local DrippingBaby = Friend:New("gfx/familiars/dripping_baby.png", {
+    PLAYER_COLLECTIBLE_EFFECTS = {
+        CollectibleType.COLLECTIBLE_ANEMIC,
     }
 })
 
-return LongBaby
+return DrippingBaby

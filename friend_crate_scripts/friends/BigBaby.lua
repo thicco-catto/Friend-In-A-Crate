@@ -6,11 +6,10 @@ local function loadFile(loc, ...)
 end
 local Friend = loadFile("friend_crate_scripts/Friend")
 
-local LongBaby = Friend:New("gfx/familiars/long_baby.png", {
+local BigBaby = Friend:New("gfx/familiars/big_baby.png", {
     PLAYER_STATS = {
-        [CacheFlag.CACHE_SHOTSPEED] = 0.1,
-        [CacheFlag.CACHE_RANGE] = 40
+        [CacheFlag.CACHE_SIZE] = 1.25
     }
 })
 
-return LongBaby
+return BigBaby

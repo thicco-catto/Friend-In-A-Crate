@@ -8,7 +8,7 @@ local Friend = loadFile("friend_crate_scripts/Friend")
 
 local CryBaby = Friend:New("gfx/familiars/cry_baby.png", {
     PLAYER_STATS = {
-        [CacheFlag.CACHE_FIREDELAY] = -2
+        [CacheFlag.CACHE_FIREDELAY] = -3
     }
 })
 
