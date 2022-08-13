@@ -33,12 +33,10 @@ function CockeyedBaby:OnShoot(familiar)
 
     local rightTear = familiar:FireProjectile((fireVector + rightTearVelocity):Normalized())
     rightTear.Position = rightTear.Position
-    --rightTear:ChangeVariant(TearVariant.BLOOD)
     rightTear.CollisionDamage = self.CURRENT_STATS.DAMAGE
 
     local leftTear = familiar:FireProjectile((fireVector + leftTearVelocity):Normalized())
     leftTear.Position = leftTear.Position
-    --leftTear:ChangeVariant(TearVariant.BLOOD)
     leftTear.CollisionDamage = self.CURRENT_STATS.DAMAGE
 
     return false

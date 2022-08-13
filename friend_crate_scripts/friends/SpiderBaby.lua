@@ -8,7 +8,7 @@ local Friend = loadFile("friend_crate_scripts/Friend")
 local Constants = loadFile("friend_crate_scripts/Constants")
 local game = Game()
 
-local SpiderBaby = Friend:New("gfx/familiars/baby_spider.png")
+local SpiderBaby = Friend:New("gfx/familiars/spider_baby.png")
 
 
 ---@param familiar EntityFamiliar

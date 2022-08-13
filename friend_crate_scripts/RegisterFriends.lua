@@ -14,8 +14,8 @@ end
 -- local bigBaby = loadFile("friend_crate_scripts/friends/BigBaby")
 -- FRIEND_CRATE_API.RegisterFriend(bigBaby)
 
-local cockeyedBaby = loadFile("friend_crate_scripts/friends/CockeyedBaby")
-FRIEND_CRATE_API.RegisterFriend(cockeyedBaby)
+-- local cockeyedBaby = loadFile("friend_crate_scripts/friends/CockeyedBaby")
+-- FRIEND_CRATE_API.RegisterFriend(cockeyedBaby)
 
 -- local cryBaby = loadFile("friend_crate_scripts/friends/CryBaby")
 -- FRIEND_CRATE_API.RegisterFriend(cryBaby)
@@ -46,6 +46,9 @@ FRIEND_CRATE_API.RegisterFriend(cockeyedBaby)
 
 -- local lostBaby = loadFile("friend_crate_scripts/friends/LostBaby")
 -- FRIEND_CRATE_API.RegisterFriend(lostBaby)
+
+local mortBaby = loadFile("friend_crate_scripts/friends/MortBaby")
+FRIEND_CRATE_API.RegisterFriend(mortBaby)
 
 -- local nooseBaby = loadFile("friend_crate_scripts/friends/NooseBaby")
 -- FRIEND_CRATE_API.RegisterFriend(nooseBaby)
