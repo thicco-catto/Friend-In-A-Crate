@@ -16,3 +16,5 @@ loadFile("friend_crate_scripts/RegisterFriends")
 local FriendCrateScript = loadFile("friend_crate_scripts/FriendCrate")
 FriendCrateScript.AddConstants(Constants)
 FriendCrateScript.AddCallbacks(FriendCrateMod)
+
+loadFile("friend_crate_scripts/compatibility/EIDCompat")
