@@ -195,6 +195,23 @@ function FriendCrate:OnRoomClear()
 end
 
 
+function FriendCrate:OnFamiliarCollision(familiar, collider)
+    --Only interested on collision with enemies and projectiles
+    if not collider:IsActiveEnemy(false) and not collider:ToProjectile() then return end
+
+    --If OnCollision returns true, collide with projectiles
+    local shouldCollide = familiar:GetData().FriendObject:OnCollision(familiar, collider)
+
+    if shouldCollide == true then
+        if collider:ToProjectile() then
+            collider:Die()
+        end
+
+        return false
+    end
+end
+
+
 function FriendCrate.AddCallbacks(mod)
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, FriendCrate.OnFamiliarCache, CacheFlag.CACHE_FAMILIARS)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, FriendCrate.OnFamiliarInit, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)
@@ -206,6 +223,8 @@ function FriendCrate.AddCallbacks(mod)
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, FriendCrate.OnNewRoom)
 
     mod:AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, FriendCrate.OnRoomClear)
+
+    mod:AddCallback(ModCallbacks.MC_PRE_FAMILIAR_COLLISION, FriendCrate.OnFamiliarCollision, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)
 end
 
 

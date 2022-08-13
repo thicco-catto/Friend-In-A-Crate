@@ -118,4 +118,8 @@ function Friend:OnRoomClear(familiar)
 end
 
 
+function Friend:OnCollision(familiar)
+end
+
+
 return Friend
