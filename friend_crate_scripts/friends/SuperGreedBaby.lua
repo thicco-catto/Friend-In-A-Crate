@@ -8,6 +8,7 @@ local Friend = loadFile("friend_crate_scripts/Friend")
 
 local SuperGreedBaby = Friend:New("gfx/familiars/super_greed_baby.png", {
     TEAR_FLAGS = TearFlags.TEAR_GREED_COIN,
+    TEAR_VARIANT = TearVariant.COIN,
 })
 
 return SuperGreedBaby

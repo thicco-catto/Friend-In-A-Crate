@@ -7,6 +7,8 @@ end
 local Friend = loadFile("friend_crate_scripts/Friend")
 
 local RevengeBaby = Friend:New("gfx/familiars/revenge_baby.png", {
+    TEAR_VARIANT = TearVariant.BLOOD,
+
     PLAYER_STATS = {
         [CacheFlag.CACHE_DAMAGE] = 1.5
     }

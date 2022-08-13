@@ -93,6 +93,9 @@ function FriendCrate:OnFamiliarUpdate(familiar)
 
                 if shouldShoot ~= false then
                     local familiarTear = familiar:FireProjectile(Constants.DIRECTION_TO_VECTOR[fireDir])
+                    if friendObject.CURRENT_STATS.TEAR_VARIANT ~= TearVariant.BLUE then
+                        familiarTear:ChangeVariant(friendObject.CURRENT_STATS.TEAR_VARIANT)
+                    end
                     familiarTear:AddTearFlags(friendObject.CURRENT_STATS.TEAR_FLAGS)
                     familiarTear.Color = friendObject.CURRENT_STATS.TEAR_COLOR
                     familiarTear.CollisionDamage = friendObject.CURRENT_STATS.DAMAGE
@@ -174,6 +177,23 @@ function FriendCrate:OnNewRoom()
 end
 
 
+function FriendCrate:OnRoomClear()
+    for i = 0, game:GetNumPlayers() - 1, 1 do
+        local player = game:GetPlayer(i)
+        local playerIndex = player:GetCollectibleRNG(1):GetSeed()
+
+        for _, familiar in ipairs(Isaac.FindByType(EntityType.ENTITY_FAMILIAR, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)) do
+            familiar = familiar:ToFamiliar()
+            local otherPlayerIndex = familiar.Player:GetCollectibleRNG(1):GetSeed()
+
+            if playerIndex == otherPlayerIndex then
+                familiar:GetData().FriendObject:OnRoomClear(familiar)
+            end
+        end
+    end
+end
+
+
 function FriendCrate.AddCallbacks(mod)
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, FriendCrate.OnFamiliarCache, CacheFlag.CACHE_FAMILIARS)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, FriendCrate.OnFamiliarInit, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)
@@ -183,6 +203,8 @@ function FriendCrate.AddCallbacks(mod)
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, FriendCrate.OnCache)
 
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, FriendCrate.OnNewRoom)
+
+    mod:AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, FriendCrate.OnRoomClear)
 end
 
 

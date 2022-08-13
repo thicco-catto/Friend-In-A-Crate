@@ -10,11 +10,6 @@ local Constants = loadFile("friend_crate_scripts/Constants")
 local TrollBaby = Friend:New("gfx/familiars/troll_baby.png")
 
 
-function TrollBaby:OnShoot()
-    return true
-end
-
-
 ---@param familiar EntityFamiliar
 function TrollBaby:OnUpdate(familiar)
     if familiar:GetData().ShootAnimFrames > 0 then return end

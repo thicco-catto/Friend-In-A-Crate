@@ -4,6 +4,7 @@ local Friend = {
         DAMAGE = 3.5,
         FIRE_RATE = 20,
         TEAR_FLAGS = TearFlags.TEAR_NORMAL,
+        TEAR_VARIANT = TearVariant.BLUE,
         TEAR_COLOR = Color(1, 1, 1),
 
         PLAYER_STATS = {},
@@ -17,6 +18,7 @@ local Friend = {
         DAMAGE = 3.5,
         FIRE_RATE = 20,
         TEAR_FLAGS = TearFlags.TEAR_NORMAL,
+        TEAR_VARIANT = TearVariant.BLUE,
         TEAR_COLOR = Color(1, 1, 1),
 
         PLAYER_STATS = {},
@@ -33,6 +35,7 @@ function Friend:New(sprite, newFriendStats)
             DAMAGE = newFriendStats.DAMAGE or 3.5,
             FIRE_RATE = newFriendStats.FIRE_RATE or 20,
             TEAR_FLAGS = newFriendStats.TEAR_FLAGS or TearFlags.TEAR_NORMAL,
+            TEAR_VARIANT = newFriendStats.TEAR_VARIANT or TearVariant.BLUE,
             TEAR_COLOR = newFriendStats.TEAR_COLOR or Color(1, 1, 1),
 
             PLAYER_STATS = newFriendStats.PLAYER_STATS or {},
@@ -46,6 +49,7 @@ function Friend:New(sprite, newFriendStats)
             DAMAGE = newFriendStats.DAMAGE or 3.5,
             FIRE_RATE = newFriendStats.FIRE_RATE or 20,
             TEAR_FLAGS = newFriendStats.TEAR_FLAGS or TearFlags.TEAR_NORMAL,
+            TEAR_VARIANT = newFriendStats.TEAR_VARIANT or TearVariant.BLUE,
             TEAR_COLOR = newFriendStats.TEAR_COLOR or Color(1, 1, 1),
 
             PLAYER_STATS = newFriendStats.PLAYER_STATS or {},
@@ -63,6 +67,7 @@ function Friend:Init(familiar)
     self.CURRENT_STATS.DAMAGE = self.BASE_STATS.DAMAGE
     self.CURRENT_STATS.FIRE_RATE = self.BASE_STATS.FIRE_RATE
     self.CURRENT_STATS.TEAR_FLAGS = self.BASE_STATS.TEAR_FLAGS
+    self.CURRENT_STATS.TEAR_VARIANT = self.BASE_STATS.TEAR_VARIANT
     self.CURRENT_STATS.TEAR_COLOR = self.BASE_STATS.TEAR_COLOR
 
     self.CURRENT_STATS.PLAYER_STATS = {}
