@@ -151,6 +151,7 @@ local function ChangeStat(player, cacheFlag, amount)
     if cacheFlag == CacheFlag.CACHE_DAMAGE then
         player.Damage = player.Damage + amount
     elseif cacheFlag == CacheFlag.CACHE_FIREDELAY then
+        if player.MaxFireDelay <= 5 and amount < 0 then return end
         player.MaxFireDelay = player.MaxFireDelay + amount
     elseif cacheFlag == CacheFlag.CACHE_LUCK then
         player.Luck = player.Luck + amount
