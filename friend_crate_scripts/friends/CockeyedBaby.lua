@@ -1,18 +1,9 @@
-local function loadFile(loc, ...)
-    local _, err = pcall(require, "")
-    local modName = err:match("/mods/(.*)/%.lua")
-    local path = "mods/" .. modName .. "/"
-    return assert(loadfile(path .. loc .. ".lua"))(...)
-end
-local Friend = loadFile("friend_crate_scripts/Friend")
-local Constants = loadFile("friend_crate_scripts/Constants")
-
-local CockeyedBaby = Friend:New("gfx/familiars/cockeyed_baby.png")
+local CockeyedBaby = FRIEND_CRATE_API.NewFriend("gfx/familiars/cockeyed_baby.png")
 
 ---@param familiar EntityFamiliar
 function CockeyedBaby:OnShoot(familiar)
     local fireDir = familiar.Player:GetFireDirection()
-    local fireVector = Constants.DIRECTION_TO_VECTOR[fireDir]
+    local fireVector = FRIEND_CRATE_API.VectorFromDirection(fireDir)
 
     local rightTearVelocity = Vector.Zero
     local leftTearVelocity = Vector.Zero
@@ -52,4 +43,4 @@ function CockeyedBaby:OnShoot(familiar)
     return false
 end
 
-return CockeyedBaby
+FRIEND_CRATE_API.RegisterFriend(CockeyedBaby)

@@ -1,13 +1,4 @@
-local function loadFile(loc, ...)
-    local _, err = pcall(require, "")
-    local modName = err:match("/mods/(.*)/%.lua")
-    local path = "mods/" .. modName .. "/"
-    return assert(loadfile(path .. loc .. ".lua"))(...)
-end
-local Friend = loadFile("friend_crate_scripts/Friend")
-local Constants = loadFile("friend_crate_scripts/Constants")
-
-local TrollBaby = Friend:New("gfx/familiars/troll_baby.png")
+local TrollBaby = FRIEND_CRATE_API.NewFriend("gfx/familiars/troll_baby.png")
 
 
 ---@param familiar EntityFamiliar
@@ -22,7 +13,7 @@ function TrollBaby:OnUpdate(familiar)
         if fireDir == Direction.NO_DIRECTION then
             fireDir = Direction.DOWN
         end
-        familiar:GetSprite():Play(Constants.SHOOT_ANIM_PER_DIRECTION[fireDir], true)
+        familiar:GetSprite():Play(FRIEND_CRATE_API.ShootingAnimFromDirection(fireDir), true)
 
         --Spawn troll bomb
         local variant = BombVariant.BOMB_TROLL
@@ -36,4 +27,4 @@ function TrollBaby:OnUpdate(familiar)
 end
 
 
-return TrollBaby
+FRIEND_CRATE_API.RegisterFriend(TrollBaby)

@@ -1,13 +1,5 @@
-local function loadFile(loc, ...)
-    local _, err = pcall(require, "")
-    local modName = err:match("/mods/(.*)/%.lua")
-    local path = "mods/" .. modName .. "/"
-    return assert(loadfile(path .. loc .. ".lua"))(...)
-end
-local Friend = loadFile("friend_crate_scripts/Friend")
+local GlassBaby = FRIEND_CRATE_API.NewFriend("gfx/familiars/glass_baby.png")
 local game = Game()
-
-local GlassBaby = Friend:New("gfx/familiars/glass_baby.png")
 
 
 function GlassBaby:OnRoomClear(familiar)
@@ -41,4 +33,5 @@ function GlassBaby:OnRoomClear(familiar)
     Isaac.Spawn(EntityType.ENTITY_PICKUP, chosenVariant, chosenSubType, spawningPos, Vector.Zero, nil)
 end
 
-return GlassBaby
+
+FRIEND_CRATE_API.RegisterFriend(GlassBaby)

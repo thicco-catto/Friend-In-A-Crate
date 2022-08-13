@@ -1,12 +1,4 @@
-local function loadFile(loc, ...)
-    local _, err = pcall(require, "")
-    local modName = err:match("/mods/(.*)/%.lua")
-    local path = "mods/" .. modName .. "/"
-    return assert(loadfile(path .. loc .. ".lua"))(...)
-end
-local Friend = loadFile("friend_crate_scripts/Friend")
-
-local RageBaby = Friend:New("gfx/familiars/rage_baby.png", {
+local RageBaby = FRIEND_CRATE_API.NewFriend("gfx/familiars/rage_baby.png", {
     TEAR_VARIANT = TearVariant.BLOOD,
 
     PLAYER_STATS = {
@@ -14,4 +6,4 @@ local RageBaby = Friend:New("gfx/familiars/rage_baby.png", {
     }
 })
 
-return RageBaby
+FRIEND_CRATE_API.RegisterFriend(RageBaby)

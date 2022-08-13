@@ -1,13 +1,5 @@
-local function loadFile(loc, ...)
-    local _, err = pcall(require, "")
-    local modName = err:match("/mods/(.*)/%.lua")
-    local path = "mods/" .. modName .. "/"
-    return assert(loadfile(path .. loc .. ".lua"))(...)
-end
-local Friend = loadFile("friend_crate_scripts/Friend")
+local BeanBaby = FRIEND_CRATE_API.NewFriend("gfx/familiars/bean_baby.png")
 local game = Game()
-
-local BeanBaby = Friend:New("gfx/familiars/bean_baby.png")
 
 local FartCooldown = 0
 local MAX_FART_COOLDOWN = 30
@@ -26,4 +18,5 @@ function BeanBaby:OnCollision(familiar)
     return true
 end
 
-return BeanBaby
+
+FRIEND_CRATE_API.RegisterFriend(BeanBaby)

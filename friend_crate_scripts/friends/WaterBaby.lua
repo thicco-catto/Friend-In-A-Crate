@@ -1,19 +1,4 @@
-local function loadFile(loc, ...)
-    local _, err = pcall(require, "")
-    local modName = err:match("/mods/(.*)/%.lua")
-    local path = "mods/" .. modName .. "/"
-    return assert(loadfile(path .. loc .. ".lua"))(...)
-end
-local Friend = loadFile("friend_crate_scripts/Friend")
-local Constants = loadFile("friend_crate_scripts/Constants")
-
-local WaterBaby = Friend:New("gfx/familiars/water_baby.png")
-
-
-function WaterBaby:OnShoot()
-    return true
-end
-
+local WaterBaby = FRIEND_CRATE_API.NewFriend("gfx/familiars/water_baby.png")
 
 ---@param familiar EntityFamiliar
 function WaterBaby:OnCollision(familiar)
@@ -42,9 +27,9 @@ function WaterBaby:OnCollision(familiar)
     if fireDir == Direction.NO_DIRECTION then
         fireDir = Direction.DOWN
     end
-    familiar:GetSprite():Play(Constants.SHOOT_ANIM_PER_DIRECTION[fireDir], true)
+    familiar:GetSprite():Play(FRIEND_CRATE_API.ShootingAnimFromDirection(fireDir), true)
 
     return true
 end
 
-return WaterBaby
+FRIEND_CRATE_API.RegisterFriend(WaterBaby)

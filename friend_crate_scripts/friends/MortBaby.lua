@@ -1,12 +1,4 @@
-local function loadFile(loc, ...)
-    local _, err = pcall(require, "")
-    local modName = err:match("/mods/(.*)/%.lua")
-    local path = "mods/" .. modName .. "/"
-    return assert(loadfile(path .. loc .. ".lua"))(...)
-end
-local Friend = loadFile("friend_crate_scripts/Friend")
-
-local MortBaby = Friend:New("gfx/familiars/mort_baby.png")
+local MortBaby = FRIEND_CRATE_API.NewFriend("gfx/familiars/mort_baby.png")
 
 ---@param familiar EntityFamiliar
 function MortBaby:OnShoot(familiar)
@@ -22,4 +14,4 @@ function MortBaby:OnShoot(familiar)
     return false
 end
 
-return MortBaby
+FRIEND_CRATE_API.RegisterFriend(MortBaby)

@@ -5,89 +5,60 @@ local function loadFile(loc, ...)
     return assert(loadfile(path .. loc .. ".lua"))(...)
 end
 
-local beanBaby = loadFile("friend_crate_scripts/friends/BeanBaby")
-FRIEND_CRATE_API.RegisterFriend(beanBaby)
+loadFile("friend_crate_scripts/friends/BeanBaby")
 
-local begottenBaby = loadFile("friend_crate_scripts/friends/BegottenBaby")
-FRIEND_CRATE_API.RegisterFriend(begottenBaby)
+loadFile("friend_crate_scripts/friends/BegottenBaby")
 
-local belialBaby = loadFile("friend_crate_scripts/friends/BelialBaby")
-FRIEND_CRATE_API.RegisterFriend(belialBaby)
+loadFile("friend_crate_scripts/friends/BelialBaby")
 
-local bigBaby = loadFile("friend_crate_scripts/friends/BigBaby")
-FRIEND_CRATE_API.RegisterFriend(bigBaby)
+loadFile("friend_crate_scripts/friends/BigBaby")
 
-local cockeyedBaby = loadFile("friend_crate_scripts/friends/CockeyedBaby")
-FRIEND_CRATE_API.RegisterFriend(cockeyedBaby)
+loadFile("friend_crate_scripts/friends/CockeyedBaby")
 
-local cryBaby = loadFile("friend_crate_scripts/friends/CryBaby")
-FRIEND_CRATE_API.RegisterFriend(cryBaby)
+loadFile("friend_crate_scripts/friends/CryBaby")
 
-local cyBaby = loadFile("friend_crate_scripts/friends/CyBaby")
-FRIEND_CRATE_API.RegisterFriend(cyBaby)
+loadFile("friend_crate_scripts/friends/CyBaby")
 
-local darkBaby = loadFile("friend_crate_scripts/friends/DarkBaby")
-FRIEND_CRATE_API.RegisterFriend(darkBaby)
+loadFile("friend_crate_scripts/friends/DarkBaby")
 
-local deadBaby = loadFile("friend_crate_scripts/friends/DeadBaby")
-FRIEND_CRATE_API.RegisterFriend(deadBaby)
+loadFile("friend_crate_scripts/friends/DeadBaby")
 
-local doubleBaby = loadFile("friend_crate_scripts/friends/DoubleBaby")
-FRIEND_CRATE_API.RegisterFriend(doubleBaby)
+loadFile("friend_crate_scripts/friends/DoubleBaby")
 
-local drippingBaby = loadFile("friend_crate_scripts/friends/DrippingBaby")
-FRIEND_CRATE_API.RegisterFriend(drippingBaby)
+loadFile("friend_crate_scripts/friends/DrippingBaby")
 
-local glassBaby = loadFile("friend_crate_scripts/friends/GlassBaby")
-FRIEND_CRATE_API.RegisterFriend(glassBaby)
+loadFile("friend_crate_scripts/friends/GlassBaby")
 
-local greenBaby = loadFile("friend_crate_scripts/friends/GreenBaby")
-FRIEND_CRATE_API.RegisterFriend(greenBaby)
+loadFile("friend_crate_scripts/friends/GreenBaby")
 
-local longBaby = loadFile("friend_crate_scripts/friends/LongBaby")
-FRIEND_CRATE_API.RegisterFriend(longBaby)
+loadFile("friend_crate_scripts/friends/LongBaby")
 
-local lilBaby = loadFile("friend_crate_scripts/friends/LilBaby")
-FRIEND_CRATE_API.RegisterFriend(lilBaby)
+loadFile("friend_crate_scripts/friends/LilBaby")
 
-local lostBaby = loadFile("friend_crate_scripts/friends/LostBaby")
-FRIEND_CRATE_API.RegisterFriend(lostBaby)
+loadFile("friend_crate_scripts/friends/LostBaby")
 
-local mortBaby = loadFile("friend_crate_scripts/friends/MortBaby")
-FRIEND_CRATE_API.RegisterFriend(mortBaby)
+loadFile("friend_crate_scripts/friends/MortBaby")
 
-local nooseBaby = loadFile("friend_crate_scripts/friends/NooseBaby")
-FRIEND_CRATE_API.RegisterFriend(nooseBaby)
+loadFile("friend_crate_scripts/friends/NooseBaby")
 
-local psyBaby = loadFile("friend_crate_scripts/friends/PsyBaby")
-FRIEND_CRATE_API.RegisterFriend(psyBaby)
+loadFile("friend_crate_scripts/friends/PsyBaby")
 
-local rageBaby = loadFile("friend_crate_scripts/friends/RageBaby")
-FRIEND_CRATE_API.RegisterFriend(rageBaby)
+loadFile("friend_crate_scripts/friends/RageBaby")
 
-local revengeBaby = loadFile("friend_crate_scripts/friends/RevengeBaby")
-FRIEND_CRATE_API.RegisterFriend(revengeBaby)
+loadFile("friend_crate_scripts/friends/RevengeBaby")
 
-local shadowBaby = loadFile("friend_crate_scripts/friends/ShadowBaby")
-FRIEND_CRATE_API.RegisterFriend(shadowBaby)
+loadFile("friend_crate_scripts/friends/ShadowBaby")
 
-local spiderBaby = loadFile("friend_crate_scripts/friends/SpiderBaby")
-FRIEND_CRATE_API.RegisterFriend(spiderBaby)
+loadFile("friend_crate_scripts/friends/SpiderBaby")
 
-local suckyBaby = loadFile("friend_crate_scripts/friends/SuckyBaby")
-FRIEND_CRATE_API.RegisterFriend(suckyBaby)
+loadFile("friend_crate_scripts/friends/SuckyBaby")
 
-local superGreedBaby = loadFile("friend_crate_scripts/friends/SuperGreedBaby")
-FRIEND_CRATE_API.RegisterFriend(superGreedBaby)
+loadFile("friend_crate_scripts/friends/SuperGreedBaby")
 
-local trollBaby = loadFile("friend_crate_scripts/friends/TrollBaby")
-FRIEND_CRATE_API.RegisterFriend(trollBaby)
+loadFile("friend_crate_scripts/friends/TrollBaby")
 
-local waterBaby = loadFile("friend_crate_scripts/friends/WaterBaby")
-FRIEND_CRATE_API.RegisterFriend(waterBaby)
+loadFile("friend_crate_scripts/friends/WaterBaby")
 
-local whoreBaby = loadFile("friend_crate_scripts/friends/WhoreBaby")
-FRIEND_CRATE_API.RegisterFriend(whoreBaby)
+loadFile("friend_crate_scripts/friends/WhoreBaby")
 
-local yellowBaby = loadFile("friend_crate_scripts/friends/YellowBaby")
-FRIEND_CRATE_API.RegisterFriend(yellowBaby)
+loadFile("friend_crate_scripts/friends/YellowBaby")

@@ -1,17 +1,9 @@
-local function loadFile(loc, ...)
-    local _, err = pcall(require, "")
-    local modName = err:match("/mods/(.*)/%.lua")
-    local path = "mods/" .. modName .. "/"
-    return assert(loadfile(path .. loc .. ".lua"))(...)
-end
-local Friend = loadFile("friend_crate_scripts/Friend")
-local Constants = loadFile("friend_crate_scripts/Constants")
+local SpiderBaby = FRIEND_CRATE_API.NewFriend("gfx/familiars/spider_baby.png")
 local game = Game()
-
-local SpiderBaby = Friend:New("gfx/familiars/spider_baby.png")
 
 local spiderCooldown = 0
 local MAX_SPIDER_COOLDOWN = 20
+
 
 ---@param familiar EntityFamiliar
 function SpiderBaby:OnUpdate(familiar)
@@ -31,7 +23,7 @@ function SpiderBaby:OnUpdate(familiar)
         if fireDir == Direction.NO_DIRECTION then
             fireDir = Direction.DOWN
         end
-        familiar:GetSprite():Play(Constants.SHOOT_ANIM_PER_DIRECTION[fireDir], true)
+        familiar:GetSprite():Play(FRIEND_CRATE_API.ShootingAnimFromDirection(fireDir), true)
 
         local spider = familiar.Player:AddBlueSpider(familiar.Position + Vector(0, -5))
         spider:GetSprite():Play("Appear", true)
@@ -41,4 +33,4 @@ function SpiderBaby:OnUpdate(familiar)
 end
 
 
-return SpiderBaby
+FRIEND_CRATE_API.RegisterFriend(SpiderBaby)

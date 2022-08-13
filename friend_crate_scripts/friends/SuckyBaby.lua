@@ -1,14 +1,5 @@
-local function loadFile(loc, ...)
-    local _, err = pcall(require, "")
-    local modName = err:match("/mods/(.*)/%.lua")
-    local path = "mods/" .. modName .. "/"
-    return assert(loadfile(path .. loc .. ".lua"))(...)
-end
-local Friend = loadFile("friend_crate_scripts/Friend")
+local SuckyBaby = FRIEND_CRATE_API.NewFriend("gfx/familiars/sucky_baby.png")
 local game = Game()
-
-local SuckyBaby = Friend:New("gfx/familiars/sucky_baby.png")
-
 
 local FakeSuccubusAuraVariant = Isaac.GetEntityVariantByName("Fake Succubus Aura")
 
@@ -42,4 +33,5 @@ function SuckyBaby:OnUpdate(familiar)
     end
 end
 
-return SuckyBaby
+
+FRIEND_CRATE_API.RegisterFriend(SuckyBaby)
