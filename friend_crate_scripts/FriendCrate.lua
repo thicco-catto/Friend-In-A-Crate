@@ -99,6 +99,7 @@ function FriendCrate:OnFamiliarUpdate(familiar)
                     familiarTear:AddTearFlags(friendObject.CURRENT_STATS.TEAR_FLAGS)
                     familiarTear.Color = friendObject.CURRENT_STATS.TEAR_COLOR
                     familiarTear.CollisionDamage = friendObject.CURRENT_STATS.DAMAGE
+                    familiarTear.Velocity = familiarTear.Velocity * friendObject.CURRENT_STATS.SHOT_SPEED
                 end
             end
         end
