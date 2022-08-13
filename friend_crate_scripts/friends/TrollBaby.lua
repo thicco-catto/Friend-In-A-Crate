@@ -25,7 +25,11 @@ function TrollBaby:OnUpdate(familiar)
         familiar:GetSprite():Play(Constants.SHOOT_ANIM_PER_DIRECTION[fireDir], true)
 
         --Spawn troll bomb
-        Isaac.Spawn(EntityType.ENTITY_BOMB, BombVariant.BOMB_TROLL, 0, familiar.Position + Vector(0, -5), Vector.Zero, nil)
+        local variant = BombVariant.BOMB_TROLL
+        if familiar.Player:HasCollectible(CollectibleType.COLLECTIBLE_BFFS) then
+            variant = BombVariant.BOMB_SUPERTROLL
+        end
+        Isaac.Spawn(EntityType.ENTITY_BOMB, variant, 0, familiar.Position + Vector(0, -5), Vector.Zero, nil)
 
         SFXManager():Play(SoundEffect.SOUND_BROWNIE_LAUGH, 1, 2, false, math.random(-1, 1)*0.2 + 1)
     end

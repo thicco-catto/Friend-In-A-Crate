@@ -10,15 +10,21 @@ local game = Game()
 
 local SpiderBaby = Friend:New("gfx/familiars/spider_baby.png")
 
+local spiderCooldown = 0
+local MAX_SPIDER_COOLDOWN = 20
 
 ---@param familiar EntityFamiliar
 function SpiderBaby:OnUpdate(familiar)
-    if familiar:GetData().ShootAnimFrames > 0 then return end
+    if spiderCooldown > 0 then
+        spiderCooldown = spiderCooldown - 1
+        return
+    end
     if game:GetRoom():IsClear() then return end
 
     local rng = familiar:GetDropRNG()
     if rng:RandomInt(1000) < 5 then
         familiar:GetData().ShootAnimFrames = 16
+        spiderCooldown = MAX_SPIDER_COOLDOWN
 
         --Shoot spiders
         local fireDir = familiar.Player:GetFireDirection()

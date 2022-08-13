@@ -29,8 +29,14 @@ function CyBaby:OnUpdate(familiar)
     local rng = familiar:GetDropRNG()
     if rng:RandomInt(100) < 15 then
         LaserTimer = MAX_LASER_TIMER
+
+        local laserDamage = 1
+        if familiar.Player:HasCollectible(CollectibleType.COLLECTIBLE_BFFS) then
+            laserDamage = 2
+        end
+
         player:FireTechLaser(familiar.Position, LaserOffset.LASER_TECH5_OFFSET,
-        Constants.DIRECTION_TO_VECTOR[player:GetFireDirection()], false, false, familiar, 1/player.Damage)
+        Constants.DIRECTION_TO_VECTOR[player:GetFireDirection()], false, false, familiar, 1/player.Damage * laserDamage)
     end
 end
 

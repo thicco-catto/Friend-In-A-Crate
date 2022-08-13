@@ -26,6 +26,14 @@ function WaterBaby:OnCollision(familiar)
             if x ~= 0 or y ~= 0 then
                 local tear = familiar:FireProjectile(Vector(x, y):Normalized())
                 tear.CollisionDamage = self.CURRENT_STATS.DAMAGE
+
+                if familiar.Player:HasCollectible(CollectibleType.COLLECTIBLE_BFFS) then
+                    tear.CollisionDamage = tear.CollisionDamage * 2
+                end
+
+                if familiar.Player:HasTrinket(TrinketType.TRINKET_BABY_BENDER) then
+                    tear.Color = Color(0.4, 0.15, 0.38, 1, 0.27843, 0, 0.4549)
+                end
             end
         end
     end

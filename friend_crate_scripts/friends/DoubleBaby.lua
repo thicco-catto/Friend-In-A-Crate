@@ -42,6 +42,16 @@ function DoubleBaby:OnShoot(familiar)
     redTear:ChangeVariant(TearVariant.BLOOD)
     redTear.CollisionDamage = self.CURRENT_STATS.DAMAGE
 
+    if familiar.Player:HasCollectible(CollectibleType.COLLECTIBLE_BFFS) then
+        blueTear.CollisionDamage = blueTear.CollisionDamage * 2
+        redTear.CollisionDamage = redTear.CollisionDamage * 2
+    end
+
+    if familiar.Player:HasTrinket(TrinketType.TRINKET_BABY_BENDER) then
+        blueTear.Color = Color(0.4, 0.15, 0.38, 1, 0.27843, 0, 0.4549)
+        redTear.Color = Color(0.4, 0.15, 0.38, 1, 0.27843, 0, 0.4549)
+    end
+
     return false
 end
 

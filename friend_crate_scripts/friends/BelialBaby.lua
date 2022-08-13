@@ -7,6 +7,8 @@ end
 local Friend = loadFile("friend_crate_scripts/Friend")
 
 local BelialBaby = Friend:New("gfx/familiars/belial_baby.png", {
+    TEAR_SCALE = 1.3,
+
     PLAYER_COLLECTIBLE_EFFECTS = {
         CollectibleType.COLLECTIBLE_BOOK_OF_BELIAL
     }

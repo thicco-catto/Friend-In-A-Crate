@@ -80,7 +80,11 @@ function FriendCrate:OnFamiliarUpdate(familiar)
                 sprite:SetAnimation(Constants.FLOAT_ANIM_PER_DIRECTION[fireDir], false)
             end
         else
+            --Set tear delay (half if the player has forgotten lullaby)
             familiar.FireCooldown = friendObject.CURRENT_STATS.FIRE_RATE
+            if player:HasTrinket(TrinketType.TRINKET_FORGOTTEN_LULLABY) then
+                familiar.FireCooldown = math.max(1, math.ceil(familiar.FireCooldown / 2))
+            end
 
             --If OnShoot returns true, ignore the default shooting logic
             --If it returns false, player the animation but ignore the shooting
@@ -91,12 +95,34 @@ function FriendCrate:OnFamiliarUpdate(familiar)
 
                 if shouldShoot ~= false then
                     local familiarTear = familiar:FireProjectile(Constants.DIRECTION_TO_VECTOR[fireDir])
+
+                    --Change variant
                     if friendObject.CURRENT_STATS.TEAR_VARIANT ~= TearVariant.BLUE then
                         familiarTear:ChangeVariant(friendObject.CURRENT_STATS.TEAR_VARIANT)
                     end
+
+                    --Add flags
                     familiarTear:AddTearFlags(friendObject.CURRENT_STATS.TEAR_FLAGS)
+
+                    --Set color (make them purple if they have baby bender)
                     familiarTear.Color = friendObject.CURRENT_STATS.TEAR_COLOR
+                    if player:HasTrinket(TrinketType.TRINKET_BABY_BENDER) then
+                        familiarTear.Color = Color(0.4, 0.15, 0.38, 1, 0.27843, 0, 0.4549)
+                    end
+
+                    --Set damage (double it if bff)
                     familiarTear.CollisionDamage = friendObject.CURRENT_STATS.DAMAGE
+                    if player:HasCollectible(CollectibleType.COLLECTIBLE_BFFS) then
+                        familiarTear.CollisionDamage = familiarTear.CollisionDamage * 2
+                    end
+
+                    --Set tear scale
+                    familiarTear.Scale = friendObject.CURRENT_STATS.TEAR_SCALE
+                    if player:HasCollectible(CollectibleType.COLLECTIBLE_BFFS) then
+                        familiarTear.Scale = familiarTear.Scale + 0.3
+                    end
+
+                    --Set shot speed
                     familiarTear.Velocity = familiarTear.Velocity * friendObject.CURRENT_STATS.SHOT_SPEED
                 end
             end
@@ -220,6 +246,23 @@ function FriendCrate:OnEntityDamage(tookDamage, amount, _, source)
 end
 
 
+function FriendCrate:OnCMD(cmd, args)
+    if cmd == "friend" then
+        local friendIndex = tonumber(args)
+        local chosenFriend = Constants.FRIENDS_LIST[friendIndex]
+
+        print("Changing friend to " .. friendIndex)
+
+        for _, familiar in ipairs(Isaac.FindByType(EntityType.ENTITY_FAMILIAR, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)) do
+            familiar = familiar:ToFamiliar()
+            familiar:GetData().FriendObject = chosenFriend
+            familiar:GetData().FriendObject:Init(familiar)
+            break
+        end
+    end
+end
+
+
 function FriendCrate.AddCallbacks(mod)
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, FriendCrate.OnFamiliarCache, CacheFlag.CACHE_FAMILIARS)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, FriendCrate.OnFamiliarInit, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)
@@ -233,6 +276,8 @@ function FriendCrate.AddCallbacks(mod)
     mod:AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, FriendCrate.OnRoomClear)
     mod:AddCallback(ModCallbacks.MC_PRE_FAMILIAR_COLLISION, FriendCrate.OnFamiliarCollision, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)
     mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, FriendCrate.OnEntityDamage)
+
+    mod:AddCallback(ModCallbacks.MC_EXECUTE_CMD, FriendCrate.OnCMD)
 end
 
 
