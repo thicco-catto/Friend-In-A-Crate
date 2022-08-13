@@ -86,7 +86,7 @@ function FriendCrate:OnFamiliarUpdate(familiar)
 
             --If OnShoot returns true, ignore the default shooting logic
             --If it returns false, player the animation but ignore the shooting
-            local shouldShoot = friendObject:OnShoot()
+            local shouldShoot = friendObject:OnShoot(familiar)
             if shouldShoot ~= true then
                 sprite:SetAnimation(Constants.SHOOT_ANIM_PER_DIRECTION[fireDir], false)
                 familiar:GetData().ShootAnimFrames = 16

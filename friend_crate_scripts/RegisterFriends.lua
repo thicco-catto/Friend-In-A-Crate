@@ -5,8 +5,8 @@ local function loadFile(loc, ...)
     return assert(loadfile(path .. loc .. ".lua"))(...)
 end
 
-local begottenBaby = loadFile("friend_crate_scripts/friends/BegottenBaby")
-FRIEND_CRATE_API.RegisterFriend(begottenBaby)
+-- local begottenBaby = loadFile("friend_crate_scripts/friends/BegottenBaby")
+-- FRIEND_CRATE_API.RegisterFriend(begottenBaby)
 
 -- local belialBaby = loadFile("friend_crate_scripts/friends/BelialBaby")
 -- FRIEND_CRATE_API.RegisterFriend(belialBaby)
@@ -22,6 +22,9 @@ FRIEND_CRATE_API.RegisterFriend(begottenBaby)
 
 -- local darkBaby = loadFile("friend_crate_scripts/friends/DarkBaby")
 -- FRIEND_CRATE_API.RegisterFriend(darkBaby)
+
+local doubleBaby = loadFile("friend_crate_scripts/friends/DoubleBaby")
+FRIEND_CRATE_API.RegisterFriend(doubleBaby)
 
 -- local drippingBaby = loadFile("friend_crate_scripts/friends/DrippingBaby")
 -- FRIEND_CRATE_API.RegisterFriend(drippingBaby)
