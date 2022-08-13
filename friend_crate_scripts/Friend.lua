@@ -122,4 +122,8 @@ function Friend:OnCollision(familiar)
 end
 
 
+function Friend:OnDealDamage(familiar, tookDamage, amount)
+end
+
+
 return Friend

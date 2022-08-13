@@ -51,8 +51,6 @@ function FriendCrate:OnFamiliarInit(familiar)
 
     local chosenFriend = Constants.FRIENDS_LIST[rng:RandomInt(#Constants.FRIENDS_LIST) + 1]
 
-    print(Constants.FRIENDS_LIST[1])
-
     familiar:GetData().FriendObject = chosenFriend
     familiar:GetData().FriendObject:Init(familiar)
     familiar:AddToFollowers()
@@ -212,6 +210,16 @@ function FriendCrate:OnFamiliarCollision(familiar, collider)
 end
 
 
+---@param source EntityRef
+function FriendCrate:OnEntityDamage(tookDamage, amount, _, source)
+    if source.SpawnerType == EntityType.ENTITY_FAMILIAR and source.SpawnerVariant then
+        local familiar = source.Entity.SpawnerEntity:ToFamiliar()
+
+        familiar:GetData().FriendObject:OnDealDamage(familiar, tookDamage, amount)
+    end
+end
+
+
 function FriendCrate.AddCallbacks(mod)
     mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, FriendCrate.OnFamiliarCache, CacheFlag.CACHE_FAMILIARS)
     mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, FriendCrate.OnFamiliarInit, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)
@@ -223,8 +231,8 @@ function FriendCrate.AddCallbacks(mod)
     mod:AddCallback(ModCallbacks.MC_POST_NEW_ROOM, FriendCrate.OnNewRoom)
 
     mod:AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, FriendCrate.OnRoomClear)
-
     mod:AddCallback(ModCallbacks.MC_PRE_FAMILIAR_COLLISION, FriendCrate.OnFamiliarCollision, Constants.FRIEND_CRATE_FAMILIAR_VARIANT)
+    mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, FriendCrate.OnEntityDamage)
 end
 
 

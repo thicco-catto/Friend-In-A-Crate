@@ -29,6 +29,9 @@ end
 -- local darkBaby = loadFile("friend_crate_scripts/friends/DarkBaby")
 -- FRIEND_CRATE_API.RegisterFriend(darkBaby)
 
+local deadBaby = loadFile("friend_crate_scripts/friends/DeadBaby")
+FRIEND_CRATE_API.RegisterFriend(deadBaby)
+
 -- local doubleBaby = loadFile("friend_crate_scripts/friends/DoubleBaby")
 -- FRIEND_CRATE_API.RegisterFriend(doubleBaby)
 
@@ -77,8 +80,8 @@ end
 -- local trollBaby = loadFile("friend_crate_scripts/friends/TrollBaby")
 -- FRIEND_CRATE_API.RegisterFriend(trollBaby)
 
-local waterBaby = loadFile("friend_crate_scripts/friends/WaterBaby")
-FRIEND_CRATE_API.RegisterFriend(waterBaby)
+-- local waterBaby = loadFile("friend_crate_scripts/friends/WaterBaby")
+-- FRIEND_CRATE_API.RegisterFriend(waterBaby)
 
 -- local whoreBaby = loadFile("friend_crate_scripts/friends/WhoreBaby")
 -- FRIEND_CRATE_API.RegisterFriend(whoreBaby)
