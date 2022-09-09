@@ -3,6 +3,8 @@ local Constants = {}
 Constants.FRIEND_CRATE_ITEM = Isaac.GetItemIdByName("Friend in a crate")
 Constants.FRIEND_CRATE_FAMILIAR_VARIANT = Isaac.GetEntityVariantByName("Friend In A Crate")
 
+Constants.TROLLED_CHALLENGE = Isaac.GetChallengeIdByName("Trolled")
+
 Constants.FLOAT_ANIM_PER_DIRECTION = {
 	[Direction.NO_DIRECTION] = "FloatDown",
 	[Direction.LEFT] = "FloatLeft",

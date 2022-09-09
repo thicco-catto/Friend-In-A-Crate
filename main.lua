@@ -17,4 +17,8 @@ local FriendCrateScript = loadFile("friend_crate_scripts/FriendCrate")
 FriendCrateScript.AddConstants(Constants)
 FriendCrateScript.AddCallbacks(FriendCrateMod)
 
+local TrolledChallenge = loadFile("friend_crate_scripts/TrolledChallenge")
+TrolledChallenge.AddConstants(Constants)
+TrolledChallenge.AddCallbacks(FriendCrateMod)
+
 loadFile("friend_crate_scripts/compatibility/EIDCompat")

@@ -51,6 +51,10 @@ function FriendCrate:OnFamiliarInit(familiar)
 
     local chosenFriend = Constants.FRIENDS_LIST[rng:RandomInt(#Constants.FRIENDS_LIST) + 1]
 
+    if Isaac.GetChallenge() == Constants.TROLLED_CHALLENGE then
+        chosenFriend = Constants.FRIENDS_LIST[26]
+    end
+
     familiar:GetData().FriendObject = chosenFriend
     familiar:GetData().FriendObject:Init(familiar)
     familiar:AddToFollowers()
@@ -194,6 +198,10 @@ function FriendCrate:OnNewRoom()
 
             if playerIndex == otherPlayerIndex then
                 local chosenFriend = Constants.FRIENDS_LIST[rng:RandomInt(#Constants.FRIENDS_LIST) + 1]
+
+                if Isaac.GetChallenge() == Constants.TROLLED_CHALLENGE then
+                    chosenFriend = Constants.FRIENDS_LIST[26]
+                end
 
                 familiar:GetData().FriendObject = chosenFriend
                 familiar:GetData().FriendObject:Init(familiar)
