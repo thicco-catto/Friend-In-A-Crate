@@ -16,6 +16,11 @@ end
 function TrolledChallenge:OnCollectibleInit(collectible)
     if Isaac.GetChallenge() ~= Constants.TROLLED_CHALLENGE then return end
 
+    local room = Game():GetRoom()
+
+    if room:GetType() ~= RoomType.ROOM_SHOP and room:GetType() ~= RoomType.ROOM_TREASURE and
+    room:GetType() ~= RoomType.ROOM_PLANETARIUM then return end
+
     local trolledEffect = Isaac.Spawn(EntityType.ENTITY_EFFECT, Constants.TROLLED_EFFECT, 0, collectible.Position, Vector.Zero, nil)
     trolledEffect:GetSprite():Play("appear", true)
 
