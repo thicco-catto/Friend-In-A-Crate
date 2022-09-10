@@ -4,6 +4,8 @@ Constants.FRIEND_CRATE_ITEM = Isaac.GetItemIdByName("Friend in a crate")
 Constants.FRIEND_CRATE_FAMILIAR_VARIANT = Isaac.GetEntityVariantByName("Friend In A Crate")
 
 Constants.TROLLED_CHALLENGE = Isaac.GetChallengeIdByName("Trolled")
+Constants.TROLLED_EFFECT = Isaac.GetEntityVariantByName("Trolled Item Effect")
+Constants.SICKO_MODE_SOUND = Isaac.GetSoundIdByName("sicko mode")
 
 Constants.FLOAT_ANIM_PER_DIRECTION = {
 	[Direction.NO_DIRECTION] = "FloatDown",

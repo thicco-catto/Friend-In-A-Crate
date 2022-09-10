@@ -1,0 +1,5 @@
+<sounds root="sfx/">
+    <sound name="sicko mode">
+        <sample weight="1" path="sicko mode.wav"/>
+    </sound>
+</sounds>
