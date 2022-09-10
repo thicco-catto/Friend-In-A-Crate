@@ -7,6 +7,8 @@ Constants.TROLLED_CHALLENGE = Isaac.GetChallengeIdByName("Trolled")
 Constants.TROLLED_EFFECT = Isaac.GetEntityVariantByName("Trolled Item Effect")
 Constants.SICKO_MODE_SOUND = Isaac.GetSoundIdByName("sicko mode")
 
+Constants.FAMILY_GUY_CHALLENGE = Isaac.GetChallengeIdByName("Family Guy")
+
 Constants.FLOAT_ANIM_PER_DIRECTION = {
 	[Direction.NO_DIRECTION] = "FloatDown",
 	[Direction.LEFT] = "FloatLeft",
