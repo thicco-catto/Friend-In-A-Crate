@@ -6,8 +6,7 @@ local Constants
 function FamilyGuy:OnPlayerInit(player)
     if Isaac.GetChallenge() ~= Constants.FAMILY_GUY_CHALLENGE then return end
 
-    player:AddCollectible(Constants.FRIEND_CRATE_ITEM)
-    player:AddCollectible(CollectibleType.COLLECTIBLE_ROCK_BOTTOM)
+    player:AddCollectible(Constants.FRIEND_CRATE_CHALLENGE_ITEM)
 end
 
 

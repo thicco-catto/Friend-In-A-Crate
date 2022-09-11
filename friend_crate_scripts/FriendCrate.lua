@@ -20,6 +20,7 @@ end
 ---@param player EntityPlayer
 function FriendCrate:OnFamiliarCache(player)
     local friendCrateItemCount = player:GetCollectibleNum(Constants.FRIEND_CRATE_ITEM)
+    friendCrateItemCount = friendCrateItemCount + player:GetCollectibleNum(Constants.FRIEND_CRATE_CHALLENGE_ITEM)
     local numBoxUses = player:GetEffects():GetCollectibleEffectNum(CollectibleType.COLLECTIBLE_BOX_OF_FRIENDS)
 
     local friendCrateFamiliarsNum = friendCrateItemCount + numBoxUses
@@ -67,6 +68,7 @@ function FriendCrate:OnFamiliarUpdate(familiar)
 
     local player = familiar.Player
     local friendObject = familiar:GetData().FriendObject
+
 	local fireDir = player:GetFireDirection()
     local sprite = familiar:GetSprite()
 
@@ -247,7 +249,8 @@ end
 
 ---@param source EntityRef
 function FriendCrate:OnEntityDamage(tookDamage, amount, _, source)
-    if source.SpawnerType == EntityType.ENTITY_FAMILIAR and source.SpawnerVariant then
+    if source.SpawnerType == EntityType.ENTITY_FAMILIAR and
+    source.SpawnerVariant == Constants.FRIEND_CRATE_FAMILIAR_VARIANT then
         local familiar = source.Entity.SpawnerEntity:ToFamiliar()
 
         familiar:GetData().FriendObject:OnDealDamage(familiar, tookDamage, amount)

@@ -3,6 +3,8 @@ local Constants = {}
 Constants.FRIEND_CRATE_ITEM = Isaac.GetItemIdByName("Friend in a crate")
 Constants.FRIEND_CRATE_FAMILIAR_VARIANT = Isaac.GetEntityVariantByName("Friend In A Crate")
 
+Constants.FRIEND_CRATE_CHALLENGE_ITEM = Isaac.GetItemIdByName("Friend in a crate quest")
+
 Constants.TROLLED_CHALLENGE = Isaac.GetChallengeIdByName("Trolled")
 Constants.TROLLED_EFFECT = Isaac.GetEntityVariantByName("Trolled Item Effect")
 Constants.SICKO_MODE_SOUND = Isaac.GetSoundIdByName("sicko mode")

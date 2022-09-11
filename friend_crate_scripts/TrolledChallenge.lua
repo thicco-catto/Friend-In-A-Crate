@@ -7,9 +7,12 @@ local game = Game()
 function TrolledChallenge:OnPlayerInit(player)
     if Isaac.GetChallenge() ~= Constants.TROLLED_CHALLENGE then return end
 
-    player:AddCollectible(Constants.FRIEND_CRATE_ITEM)
-    player:AddCollectible(Constants.FRIEND_CRATE_ITEM)
-    player:AddCollectible(CollectibleType.COLLECTIBLE_BFFS)
+    player:AddCollectible(Constants.FRIEND_CRATE_CHALLENGE_ITEM)
+    player:AddCollectible(Constants.FRIEND_CRATE_CHALLENGE_ITEM)
+
+    local itemPool = game:GetItemPool()
+    itemPool:RemoveCollectible(CollectibleType.COLLECTIBLE_SACRIFICIAL_ALTAR)
+    itemPool:RemoveTrinket(TrinketType.TRINKET_SAFETY_SCISSORS)
 end
 
 
