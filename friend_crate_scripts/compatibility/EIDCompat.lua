@@ -1,12 +1,6 @@
 if not EID then return end
 
-local function loadFile(loc, ...)
-    local _, err = pcall(require, "")
-    local modName = err:match("/mods/(.*)/%.lua")
-    local path = "mods/" .. modName .. "/"
-    return assert(loadfile(path .. loc .. ".lua"))(...)
-end
-local Constants = loadFile("friend_crate_scripts/Constants")
+local Constants = require("friend_crate_scripts/Constants")
 
 EID:addCollectible(Constants.FRIEND_CRATE_ITEM,
     "#Spawns a random baby from a pool of 25" ..
